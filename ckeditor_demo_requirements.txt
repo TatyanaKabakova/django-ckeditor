@@ -3,3 +3,5 @@ django-js-asset
 Pillow
 selenium
 tox
+dj-database-url
+psycopg2

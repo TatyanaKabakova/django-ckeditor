@@ -2,6 +2,8 @@ from __future__ import absolute_import
 
 import os
 import tempfile
+import dj_database_url
+
 
 """
 Django settings for ckeditor_demo project.
@@ -43,7 +45,7 @@ TEMPLATES = [
     },
 ]
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 CACHED_STORAGE = False
 
@@ -88,13 +90,14 @@ WSGI_APPLICATION = 'ckeditor_demo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE', 'postgres:///'))}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
